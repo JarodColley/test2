@@ -1,3 +1,9 @@
+/*
+* Jarod Colley 
+* 100704994
+* March 3rd 2020
+*/
+
 class Contact
 {
     constructor(contactName = "", emailAddress = "", contactNumber = "", contactMessage = "")
@@ -102,7 +108,16 @@ let app;
 
         // Task 1 a
         $("#newTaskButton").on("click", function(){
+            let mainList = document.getElementById("taskList");
+            let task = document.getElementById("task");
+            let newTask = task.cloneNode(true);
+            let input = $("#taskTextInput").val();
             
+            newTask.childNodes[1].textContent = input;
+            
+            mainList.appendChild(newTask);
+
+            console.log(newTask);
         });
 
         // Task 1 b
