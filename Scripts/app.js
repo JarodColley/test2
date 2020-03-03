@@ -104,15 +104,16 @@ let app;
 
     function DisplayTaskList()
     {
+        //variable to hold the structure of the tasks outside of button so it does not take the structure everytime the button is clicked
+        let task = document.getElementById("task");
         document.title = "WEBD6201 - Task List";
 
         // Task 1 a
         $("#newTaskButton").on("click", function(){
             let mainList = document.getElementById("taskList");
-            let task = document.getElementById("task");
-            let newTask = task.cloneNode(true);
             let input = $("#taskTextInput").val();
-            
+            let newTask = task.cloneNode(true);
+
             newTask.childNodes[1].textContent = input;
             
             mainList.appendChild(newTask);
@@ -123,7 +124,7 @@ let app;
         $("ul").on("click", ".editButton", function(){
         
            $("#editTextInput").show();
-           
+           //event listener for enter button
            document.addEventListener("keypress", function(keyPressed) {
            
             if(keyPressed.keyCode == 13)
@@ -143,12 +144,10 @@ let app;
 
         // Task 1 c
         $("ul").on("click", ".deleteButton", function(){
-            if (confirm("Are you sure yyou want to delete this task!!!")) {
+            if (confirm("Are you sure you want to delete this task!!!")) {
                 let task = document.getElementById("task");
                 task.remove();
-              } else {
-                
-              }
+              } 
         });
     }
 
