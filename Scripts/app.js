@@ -117,17 +117,38 @@ let app;
             
             mainList.appendChild(newTask);
 
-            console.log(newTask);
         });
 
         // Task 1 b
         $("ul").on("click", ".editButton", function(){
+        
+           $("#editTextInput").show();
            
+           document.addEventListener("keypress", function(keyPressed) {
+           
+            if(keyPressed.keyCode == 13)
+            {
+                $("#editTextInput").hide();
+                let editInput = $("#editTextInput").val();
+                let task = document.getElementById("task");
+                task.childNodes[1].textContent = input;
+            }
+           })
+
+           
+        
+           
+
         });
 
         // Task 1 c
         $("ul").on("click", ".deleteButton", function(){
-           
+            if (confirm("Are you sure yyou want to delete this task!!!")) {
+                let task = document.getElementById("task");
+                task.remove();
+              } else {
+                
+              }
         });
     }
 
