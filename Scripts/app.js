@@ -105,17 +105,16 @@ let app;
     function DisplayTaskList()
     {
         document.title = "WEBD6201 - Task List";
-
+        let task = $("li#task:first").clone();
         // Task 1 a
         $("#newTaskButton").on("click", function(){
-            let mainList = document.getElementById("taskList");
-            let task = document.getElementById("task");
-            let newTask = task.cloneNode(true);
+            let newTask = $(task).clone();
             let input = $("#taskTextInput").val();
             
-            newTask.childNodes[1].textContent = input;
+            let mainList = $("ul#taskList");
+            $(newTask).find("span#taskText").text(input);
             
-            mainList.appendChild(newTask);
+            mainList.append(newTask);
 
         });
 
