@@ -105,32 +105,39 @@ let app;
     function DisplayTaskList()
     {
         document.title = "WEBD6201 - Task List";
+        //clones the first task and clones it so i always have something to clone off of for new tasks
         let task = $("li#task:first").clone();
         // Task 1 a
         $("#newTaskButton").on("click", function(){
+            //clones a new task
             let newTask = $(task).clone();
+            //gets the input 
             let input = $("#taskTextInput").val();
-            
+            //gets the taskList
             let mainList = $("ul#taskList");
+            //sets the text of the taskText
             $(newTask).find("span#taskText").text(input);
-            
+            //adds the new task onto the list
             mainList.append(newTask);
 
         });
 
         // Task 1 b
         $("ul").on("click", ".editButton", function(){
-
+           //gets the specific li tag
            let li =  $(this).parent().parent();
-        
+           //shows the text box
            li.children("input").show();
-           
+           //waits for keypress
            document.addEventListener("keypress", function(keyPressed) {
-        
+            //if the enter button is pressed
             if(keyPressed.keyCode == 13)
             {
+                //hides th text box
                 li.children("input").hide();
+                //stores the text
                 let input =  li.children("input").val();
+                //sets the text
                 li.find("span#taskText").text(input);
             }
            })
@@ -139,6 +146,7 @@ let app;
         // Task 1 c
         $("ul").on("click", ".deleteButton", function(){
             if (confirm("Are you sure you want to delete this task!!!")) {
+                //deletes the specific li tag and al of its children
                 $(this).parent().parent().remove();
               }
         });
